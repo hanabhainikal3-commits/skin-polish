@@ -34,6 +34,182 @@ h1{font-size:38px;line-height:1.15;margin:8px 0 14px} .rating{font-size:14px;mar
 .order-form{margin-top:18px;background:#fff;border:1px solid #e6e8ee;border-radius:12px;padding:20px 17px;box-shadow:0 6px 20px rgba(0,0,0,.06);font-family:'Inter',Arial,Helvetica,sans-serif}.order-form *{font-family:inherit}
 .form-step{font-family:'Poppins',Arial,sans-serif;font-size:15px;font-weight:700;color:#223b66;letter-spacing:.1px;margin-bottom:16px;display:flex;align-items:center;gap:9px}.form-step span{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border-radius:8px;background:#4d5bd5;color:#fff;font-size:13px;font-weight:700}.form-label-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:5px}.form-label-row label,.field-label{font-family:'Poppins',Arial,sans-serif;font-size:10px;font-weight:700;color:#4b5563;letter-spacing:.35px}.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.order-form input,.order-form select,.order-form textarea{width:100%;padding:12px 12px;border:1px solid #dfe3eb;border-radius:7px;font-size:13px;font-weight:500;color:#222;background:#fff;outline:none;transition:.2s}.order-form input::placeholder,.order-form textarea::placeholder{color:#9aa1ad;font-weight:400}.order-form input:focus,.order-form select:focus,.order-form textarea:focus{border-color:#6673db;box-shadow:0 0 0 3px rgba(102,115,219,.10)}.order-form textarea{grid-column:1/-1;min-height:62px;resize:vertical}.order-form .full{grid-column:1/-1}.field-label{align-self:end;margin-top:2px;margin-bottom:-4px}.order-summary{border:1px solid #e0e3e8;border-radius:8px;margin-top:14px;padding:10px 12px;font-size:13px}.order-summary>div{display:flex;justify-content:space-between;padding:5px 0;color:#555;font-weight:500}.order-summary b{color:#333;font-weight:700}.order-summary .total{border-top:1px solid #e5e7eb;margin-top:4px;padding-top:9px;font-weight:800;color:#17243b}.order-summary .total strong{color:#e33445;font-size:16px;font-weight:800}.cod-btn{background:#4d5bd5;margin-top:12px;font-family:'Poppins',Arial,sans-serif;font-size:14px;letter-spacing:.15px}.order-note{font-size:10px;color:#777;margin-top:8px;text-align:center}@media(max-width:800px){.order-grid,.form-label-row{grid-template-columns:1fr}.order-form textarea,.order-form .full{grid-column:auto}.field-label{grid-column:auto}}
 </style>
+
+<style>
+.order-status-screen{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:50px 20px;
+  background:#fff;
+  font-family:'Inter',Arial,Helvetica,sans-serif;
+}
+.status-card{
+  width:min(560px,100%);
+  text-align:center;
+  padding:42px 28px;
+  border:1px solid #e6e8ee;
+  border-radius:16px;
+  box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+.status-icon{
+  width:72px;height:72px;margin:0 auto 20px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#eef0ff;color:#4d5bd5;font-size:32px;font-weight:800;
+}
+.status-card h1{font-size:30px;margin:0 0 10px;color:#17243b}
+.status-card p{color:#667085;line-height:1.7;margin:8px 0}
+.status-loader{
+  width:42px;height:42px;margin:24px auto 8px;
+  border:4px solid #e5e7eb;
+  border-top-color:#4d5bd5;
+  border-radius:50%;
+  animation:orderSpin .8s linear infinite;
+}
+@keyframes orderSpin{to{transform:rotate(360deg)}}
+.thankyou-check{background:#eaf8ef;color:#1f9d55}
+.status-details{
+  margin:22px 0 0;
+  padding:14px;
+  background:#fafafa;
+  border-radius:10px;
+  text-align:left;
+  font-size:14px;
+}
+.status-details div{
+  display:flex;justify-content:space-between;gap:20px;
+  padding:6px 0;border-bottom:1px solid #eee;
+}
+.status-details div:last-child{border-bottom:0}
+.status-home{
+  display:inline-block;margin-top:22px;padding:13px 22px;
+  background:#4d5bd5;color:#fff;text-decoration:none;border-radius:8px;
+  font-weight:700;
+}
+@media(max-width:600px){
+  .status-card{padding:32px 20px}
+  .status-card h1{font-size:25px}
+}
+
+/* Professional thank-you page */
+.thankyou-page{
+  min-height:calc(100vh - 120px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 20px;
+  background:linear-gradient(180deg,#fff 0%,#fbf8f6 100%);
+  font-family:'Inter',Arial,Helvetica,sans-serif;
+}
+.thankyou-card{
+  width:min(680px,100%);
+  background:#fff;
+  border:1px solid #eadfd9;
+  border-radius:22px;
+  padding:46px 42px;
+  text-align:center;
+  box-shadow:0 18px 55px rgba(46,31,27,.10);
+}
+.thankyou-brand{
+  font-family:'Poppins',Arial,sans-serif;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:3px;
+  color:#2a2020;
+  margin-bottom:26px;
+}
+.thankyou-success{
+  width:82px;height:82px;margin:0 auto 22px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:#f1faf4;
+  border:1px solid #cdebd8;
+  color:#238a50;
+  font-size:38px;font-weight:800;
+}
+.thankyou-card h1{
+  margin:0 0 12px;
+  font-family:'Poppins',Arial,sans-serif;
+  font-size:34px;
+  line-height:1.2;
+  color:#201919;
+}
+.thankyou-subtitle{
+  max-width:520px;
+  margin:0 auto;
+  color:#667085;
+  font-size:15px;
+  line-height:1.75;
+}
+.thankyou-reference{
+  display:inline-block;
+  margin:18px 0 22px;
+  padding:8px 13px;
+  border-radius:999px;
+  background:#f8f3f0;
+  color:#604d47;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.4px;
+}
+.thankyou-details{
+  margin-top:8px;
+  padding:18px 20px;
+  border:1px solid #eee5e1;
+  border-radius:14px;
+  text-align:left;
+  background:#fcfbfa;
+}
+.thankyou-detail{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:10px 0;
+  border-bottom:1px solid #eee8e5;
+  font-size:14px;
+}
+.thankyou-detail:last-child{border-bottom:0}
+.thankyou-detail span{color:#777}
+.thankyou-detail strong{color:#252020;text-align:right}
+.thankyou-total{
+  margin-top:6px;
+  padding-top:14px;
+  border-top:1px solid #ddd4cf;
+}
+.thankyou-total strong{font-size:18px;color:#7b4c4c}
+.thankyou-next{
+  margin-top:24px;
+  color:#667085;
+  font-size:13px;
+  line-height:1.6;
+}
+.thankyou-home{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:190px;
+  margin-top:20px;
+  padding:14px 24px;
+  background:#6d4a4a;
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-family:'Poppins',Arial,sans-serif;
+  font-size:14px;
+  font-weight:700;
+  transition:.2s;
+}
+.thankyou-home:hover{background:#573b3b;transform:translateY(-1px)}
+@media(max-width:600px){
+  .thankyou-page{padding:35px 14px}
+  .thankyou-card{padding:34px 20px;border-radius:18px}
+  .thankyou-card h1{font-size:27px}
+  .thankyou-detail{font-size:13px}
+}
+</style>
+
 </head>
 <body>
 <div class="top">FREE DELIVERY ALL OVER PAKISTAN 🇵🇰</div>
@@ -120,6 +296,162 @@ if(viewerEl){let viewers=51; setInterval(()=>{let delta=Math.floor(Math.random()
 function updateOrderTotal(){const select=document.getElementById('dealName');const subtotal=Number(select?.selectedOptions[0]?.dataset.price||999);const total=subtotal+250;document.getElementById('summarySubtotal').textContent='Rs. '+subtotal.toLocaleString();document.getElementById('summaryTotal').textContent='Rs. '+total.toLocaleString();document.getElementById('buttonTotal').textContent='RS. '+total.toLocaleString();}
 updateOrderTotal();
 const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycby_qUHZYVn6v3H7n4VCqMAqtWrLZKkBSRP4nAU0Zvb-_j0i3V2Y6G2KoE4q82WOkj4I9A/exec';
-async function placeOrder(e){e.preventDefault();const n=document.getElementById('customerName').value.trim();const p=document.getElementById('customerPhone').value.trim();const c=document.getElementById('customerCity').value.trim();const a=document.getElementById('customerAddress').value.trim();const landmark=document.getElementById('customerLandmark')?.value.trim()||'';const deal=document.getElementById('dealName');const pack=deal.options[deal.selectedIndex].text;const subtotal=Number(deal.options[deal.selectedIndex].dataset.price||999);const total=subtotal+250;if(!n||!p||!c||!a){alert('Please fill all required fields.');return;}const payload={deal:pack,name:n,phone:p,address:a,landmark:landmark,city:c,subtotal:subtotal,delivery:250,total:total};try{await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});alert('Thank you '+n+'! Your COD order has been received. We will contact you on '+p+' to confirm delivery.');e.target.reset();deal.selectedIndex=0;updateOrderTotal();}catch(err){alert('Order submit nahi ho saka. Please try again.');console.error(err);}}
+async function placeOrder(e){
+  e.preventDefault();
+
+  const n=document.getElementById('customerName').value.trim();
+  const p=document.getElementById('customerPhone').value.trim();
+  const c=document.getElementById('customerCity').value.trim();
+  const a=document.getElementById('customerAddress').value.trim();
+  const landmark=document.getElementById('customerLandmark')?.value.trim()||'';
+  const deal=document.getElementById('dealName');
+  const pack=deal.options[deal.selectedIndex].text;
+  const subtotal=Number(deal.options[deal.selectedIndex].dataset.price||999);
+  const total=subtotal+250;
+
+  if(!n||!p||!c||!a){
+    alert('Please fill all required fields.');
+    return;
+  }
+
+  const payload={
+    deal:pack,name:n,phone:p,address:a,landmark:landmark,city:c,
+    subtotal:subtotal,delivery:250,total:total
+  };
+
+  // Prevent duplicate submissions while the order is being processed.
+  const submitButton=e.target.querySelector('button[type="submit"]');
+  if(submitButton){
+    submitButton.disabled=true;
+    submitButton.style.opacity='.65';
+    submitButton.style.cursor='not-allowed';
+  }
+
+  // Step 1: show "Processing your order..."
+  document.body.innerHTML=`
+    <div class="order-status-screen">
+      <div class="status-card">
+        <div class="status-icon">⌛</div>
+        <h1>Processing Your Order</h1>
+        <p>Please wait while we confirm your order.</p>
+        <div class="status-loader"></div>
+        <p style="font-size:13px">Your order is being submitted securely.</p>
+      </div>
+    </div>`;
+
+  // Start the 2-second countdown immediately when the processing screen appears.
+  // The Google Sheet request runs in the background, so a slow network response
+  // cannot keep the Processing screen visible longer than 2 seconds.
+  let thankYouShown=false;
+  const processingTimer=setTimeout(()=>{
+    thankYouShown=true;
+    showThankYouPage(n,p,pack,total);
+  },2000);
+
+  try{
+    await fetch(GOOGLE_SCRIPT_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
+    });
+  }catch(err){
+    console.error(err);
+    // Only show an error if the 2-second transition has not happened yet.
+    if(!thankYouShown){
+      clearTimeout(processingTimer);
+      document.body.innerHTML=`
+      <div class="order-status-screen">
+        <div class="status-card">
+          <div class="status-icon">!</div>
+          <h1>Order Submission Failed</h1>
+          <p>We couldn't submit your order. Please try again.</p>
+          <a class="status-home" href="${window.location.pathname}">Back to Product</a>
+        </div>
+      </div>`;
+    }
+  }
+}
+
+function showThankYouPage(name,phone,pack,total){
+  // Keep "thank-you" visible in the URL without requiring a server-side route.
+  const thankYouUrl=window.location.pathname+'?thank-you=true';
+  window.history.pushState({thankYou:true},'',thankYouUrl);
+
+  const orderRef='DGZ-'+Date.now().toString().slice(-8);
+  try{
+    sessionStorage.setItem('dagazeeThankYouData',JSON.stringify({
+      name:name,phone:phone,pack:pack,total:Number(total),orderRef:orderRef
+    }));
+  }catch(err){}
+
+  document.body.innerHTML=`
+    <main class="thankyou-page">
+      <section class="thankyou-card" aria-live="polite">
+        <div class="thankyou-brand">DAGAZEE</div>
+        <div class="thankyou-success">✓</div>
+
+        <h1>Thank You, ${escapeHtml(name)}!</h1>
+        <p class="thankyou-subtitle">
+          Your order has been received successfully. We appreciate your order
+          and will contact you shortly to confirm the delivery details.
+        </p>
+
+        <div class="thankyou-reference">ORDER REFERENCE: ${escapeHtml(orderRef)}</div>
+
+        <div class="thankyou-details">
+          <div class="thankyou-detail">
+            <span>Product</span>
+            <strong>${escapeHtml(pack)}</strong>
+          </div>
+          <div class="thankyou-detail">
+            <span>Payment Method</span>
+            <strong>Cash on Delivery</strong>
+          </div>
+          <div class="thankyou-detail">
+            <span>Contact Number</span>
+            <strong>${escapeHtml(phone)}</strong>
+          </div>
+          <div class="thankyou-detail thankyou-total">
+            <span>Total Amount</span>
+            <strong>Rs. ${Number(total).toLocaleString()}</strong>
+          </div>
+        </div>
+
+        <p class="thankyou-next">
+          Our team will contact you on your provided number to confirm your
+          order before dispatch.
+        </p>
+
+        <a class="thankyou-home" href="${window.location.pathname}">
+          Continue Shopping
+        </a>
+      </section>
+    </main>`;
+}
+function escapeHtml(value){
+  return String(value).replace(/[&<>"']/g,function(ch){
+    return {
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#039;'
+    }[ch];
+  });
+}
+
+// If the page is opened directly with ?thank-you=true, restore the last
+// order details when available and show the same professional thank-you page.
+if(new URLSearchParams(window.location.search).has('thank-you')){
+  let saved=null;
+  try{ saved=JSON.parse(sessionStorage.getItem('dagazeeThankYouData')||'null'); }catch(err){}
+  showThankYouPage(
+    saved?.name || 'Customer',
+    saved?.phone || '',
+    saved?.pack || 'Your Order',
+    saved?.total || 0
+  );
+}
 </script>
 </body></html>
