@@ -210,9 +210,22 @@ h1{font-size:38px;line-height:1.15;margin:8px 0 14px} .rating{font-size:14px;mar
 }
 </style>
 
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+
+  ttq.load('DB3BB5RC77UF35MHV17G');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+
 </head>
 <body>
-<div class="top">FREE DELIVERY ALL OVER PAKISTAN 🇵🇰</div>
+<div class="top">✨ YOUR GLOW IS JUST ONE ORDER AWAY ALL OVER PAKISTAN 🇵🇰</div>
 <header class="header"><div class="logo">DAGAZEE</div><nav class="nav"><a href="#home">HOME</a><a href="#product">SHOP</a><a href="#benefits">BENEFITS</a><a href="#reviews">REVIEWS</a><a href="#contact">CONTACT</a></nav><div class="icons">🔍   ♡   🛒 <span id="cart">0</span></div></header>
 <main id="home">
 <section class="hero" id="product">
@@ -295,6 +308,7 @@ const viewerEl=document.getElementById('viewerCount');
 if(viewerEl){let viewers=51; setInterval(()=>{let delta=Math.floor(Math.random()*5)-2; if(delta===0) delta=Math.random()<.5?-1:1; viewers=Math.max(39,Math.min(73,viewers+delta)); viewerEl.textContent=viewers;},1200);}
 function updateOrderTotal(){const select=document.getElementById('dealName');const subtotal=Number(select?.selectedOptions[0]?.dataset.price||999);const total=subtotal+250;document.getElementById('summarySubtotal').textContent='Rs. '+subtotal.toLocaleString();document.getElementById('summaryTotal').textContent='Rs. '+total.toLocaleString();document.getElementById('buttonTotal').textContent='RS. '+total.toLocaleString();}
 updateOrderTotal();
+if(window.ttq){ttq.track('ViewContent',{content_name:'CeraVe Hydrating Skin Polish',content_type:'product'});}
 const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycby_qUHZYVn6v3H7n4VCqMAqtWrLZKkBSRP4nAU0Zvb-_j0i3V2Y6G2KoE4q82WOkj4I9A/exec';
 async function placeOrder(e){
   e.preventDefault();
@@ -313,6 +327,8 @@ async function placeOrder(e){
     alert('Please fill all required fields.');
     return;
   }
+
+  if(window.ttq){ttq.track('InitiateCheckout',{content_name:pack,value:total,currency:'PKR'});}
 
   const payload={
     deal:pack,name:n,phone:p,address:a,landmark:landmark,city:c,
@@ -377,6 +393,8 @@ function showThankYouPage(name,phone,pack,total){
   // Keep "thank-you" visible in the URL without requiring a server-side route.
   const thankYouUrl=window.location.pathname+'?thank-you=true';
   window.history.pushState({thankYou:true},'',thankYouUrl);
+
+  if(window.ttq){ttq.track('CompletePayment',{content_name:pack,value:Number(total),currency:'PKR'});}
 
   const orderRef='DGZ-'+Date.now().toString().slice(-8);
   try{
